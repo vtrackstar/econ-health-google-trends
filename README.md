@@ -54,21 +54,33 @@ jupyter notebook
 ---
 
 🔍 Key Functions
+
 load_fred_data(file_path): Reads & formats FRED data CSVs
+
 clean_trends_data(file_path): Cleans and reshapes Google Trends data
+
 reshape_trends(df, trend_label): Converts wide-format trends into long-format for analysis
+
 pd.concat([...]): Combines all reshaped trend categories into a single DataFrame
 
 📈 Next Steps
+
 📊 Time series plots and moving averages of keyword trends
+
 🧮 Correlation analysis between economic indicators and search behavior
+
 🤖 Optional predictive modeling using economic variables to forecast fitness trends
+
 📉 Regression or changepoint detection (e.g., impact of 2020 lockdowns)
 
 📬 Contact
+
 Feel free to connect or ask questions:
+
 Bryan Louissaint
+
 📧 balouissaint@gmail.com
 
 📝 License
+
 This project is licensed under the MIT License. Feel free to use, modify, and share with attribution.
