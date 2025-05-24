@@ -23,9 +23,13 @@ This project explores how public interest in fitness shifted between home and gy
 
 ## 🧰 Project Structure
 ├── notebooks/ # Jupyter notebooks with analysis & visuals
+
 ├── data/ # Raw input CSVs
+
 ├── README.md # Project overview and instructions
+
 ├── requirements.txt # Python dependencies
+
 └── .gitignore # Ignore temp & env files
 
 ---
