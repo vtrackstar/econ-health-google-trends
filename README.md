@@ -35,7 +35,6 @@ This project explores how public interest in fitness shifted between home and gy
 ---
 
 ## ⚙️ Setup & Installation
-
 1. Clone this repository:
 git clone https://github.com/yourusername/econ-health-trends.git
 cd econ-health-trends
@@ -53,8 +52,7 @@ jupyter notebook
 
 ---
 
-🔍 Key Functions
-
+### 🔍 Key Functions
 load_fred_data(file_path): Reads & formats FRED data CSVs
 
 clean_trends_data(file_path): Cleans and reshapes Google Trends data
@@ -63,8 +61,7 @@ reshape_trends(df, trend_label): Converts wide-format trends into long-format fo
 
 pd.concat([...]): Combines all reshaped trend categories into a single DataFrame
 
-📈 Next Steps
-
+### 📈 Next Steps
 📊 Time series plots and moving averages of keyword trends
 
 🧮 Correlation analysis between economic indicators and search behavior
