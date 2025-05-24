@@ -37,7 +37,6 @@ This project explores how public interest in fitness shifted between home and gy
 ## ⚙️ Setup & Installation
 
 1. Clone this repository:
-```bash
 git clone https://github.com/yourusername/econ-health-trends.git
 cd econ-health-trends
 
