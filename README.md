@@ -70,14 +70,12 @@ pd.concat([...]): Combines all reshaped trend categories into a single DataFrame
 
 📉 Regression or changepoint detection (e.g., impact of 2020 lockdowns)
 
-📬 Contact
-
+### 📬 Contact
 Feel free to connect or ask questions:
 
 Bryan Louissaint
 
 📧 balouissaint@gmail.com
 
-📝 License
-
+### 📝 License
 This project is licensed under the MIT License. Feel free to use, modify, and share with attribution.
