@@ -2,13 +2,13 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "aec3012f",
+   "id": "ca8fe686",
    "metadata": {
     "papermill": {
-     "duration": 0.003381,
-     "end_time": "2025-05-25T12:23:24.139668",
+     "duration": 0.003571,
+     "end_time": "2025-05-25T12:38:38.483962",
      "exception": false,
-     "start_time": "2025-05-25T12:23:24.136287",
+     "start_time": "2025-05-25T12:38:38.480391",
      "status": "completed"
     },
     "tags": []
@@ -44,21 +44,21 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "0d51a8f5",
+   "id": "1cb4a05a",
    "metadata": {
     "_cell_guid": "b1076dfc-b9ad-4769-8c92-a6c4dae69d19",
     "_uuid": "8f2839f25d086af736a60e9eeb907d3b93b6e0e5",
     "execution": {
-     "iopub.execute_input": "2025-05-25T12:23:24.147588Z",
-     "iopub.status.busy": "2025-05-25T12:23:24.147172Z",
-     "iopub.status.idle": "2025-05-25T12:23:26.393022Z",
-     "shell.execute_reply": "2025-05-25T12:23:26.391221Z"
+     "iopub.execute_input": "2025-05-25T12:38:38.492250Z",
+     "iopub.status.busy": "2025-05-25T12:38:38.491356Z",
+     "iopub.status.idle": "2025-05-25T12:38:40.428914Z",
+     "shell.execute_reply": "2025-05-25T12:38:40.427894Z"
     },
     "papermill": {
-     "duration": 2.252058,
-     "end_time": "2025-05-25T12:23:26.394872",
+     "duration": 1.943123,
+     "end_time": "2025-05-25T12:38:40.430440",
      "exception": false,
-     "start_time": "2025-05-25T12:23:24.142814",
+     "start_time": "2025-05-25T12:38:38.487317",
      "status": "completed"
     },
     "tags": []
@@ -105,19 +105,19 @@
   {
    "cell_type": "code",
    "execution_count": 2,
-   "id": "f24edbec",
+   "id": "ffbc3bbe",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-05-25T12:23:26.403272Z",
-     "iopub.status.busy": "2025-05-25T12:23:26.402775Z",
-     "iopub.status.idle": "2025-05-25T12:23:26.447844Z",
-     "shell.execute_reply": "2025-05-25T12:23:26.446812Z"
+     "iopub.execute_input": "2025-05-25T12:38:40.437860Z",
+     "iopub.status.busy": "2025-05-25T12:38:40.437488Z",
+     "iopub.status.idle": "2025-05-25T12:38:40.486847Z",
+     "shell.execute_reply": "2025-05-25T12:38:40.485859Z"
     },
     "papermill": {
-     "duration": 0.051049,
-     "end_time": "2025-05-25T12:23:26.449513",
+     "duration": 0.054884,
+     "end_time": "2025-05-25T12:38:40.488526",
      "exception": false,
-     "start_time": "2025-05-25T12:23:26.398464",
+     "start_time": "2025-05-25T12:38:40.433642",
      "status": "completed"
     },
     "tags": []
@@ -201,19 +201,19 @@
   {
    "cell_type": "code",
    "execution_count": 3,
-   "id": "1c5bd2b0",
+   "id": "ba0a941f",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-05-25T12:23:26.457679Z",
-     "iopub.status.busy": "2025-05-25T12:23:26.457360Z",
-     "iopub.status.idle": "2025-05-25T12:23:26.465900Z",
-     "shell.execute_reply": "2025-05-25T12:23:26.464747Z"
+     "iopub.execute_input": "2025-05-25T12:38:40.496605Z",
+     "iopub.status.busy": "2025-05-25T12:38:40.496320Z",
+     "iopub.status.idle": "2025-05-25T12:38:40.503249Z",
+     "shell.execute_reply": "2025-05-25T12:38:40.502374Z"
     },
     "papermill": {
-     "duration": 0.014634,
-     "end_time": "2025-05-25T12:23:26.467622",
+     "duration": 0.012546,
+     "end_time": "2025-05-25T12:38:40.504667",
      "exception": false,
-     "start_time": "2025-05-25T12:23:26.452988",
+     "start_time": "2025-05-25T12:38:40.492121",
      "status": "completed"
     },
     "tags": []
@@ -238,19 +238,19 @@
   {
    "cell_type": "code",
    "execution_count": 4,
-   "id": "7bce25ff",
+   "id": "5ab1beac",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-05-25T12:23:26.475208Z",
-     "iopub.status.busy": "2025-05-25T12:23:26.474867Z",
-     "iopub.status.idle": "2025-05-25T12:23:26.529060Z",
-     "shell.execute_reply": "2025-05-25T12:23:26.528016Z"
+     "iopub.execute_input": "2025-05-25T12:38:40.512484Z",
+     "iopub.status.busy": "2025-05-25T12:38:40.512159Z",
+     "iopub.status.idle": "2025-05-25T12:38:40.591834Z",
+     "shell.execute_reply": "2025-05-25T12:38:40.591105Z"
     },
     "papermill": {
-     "duration": 0.059867,
-     "end_time": "2025-05-25T12:23:26.530796",
+     "duration": 0.085459,
+     "end_time": "2025-05-25T12:38:40.593508",
      "exception": false,
-     "start_time": "2025-05-25T12:23:26.470929",
+     "start_time": "2025-05-25T12:38:40.508049",
      "status": "completed"
     },
     "tags": []
@@ -279,19 +279,19 @@
   {
    "cell_type": "code",
    "execution_count": 5,
-   "id": "7d4a61a0",
+   "id": "4952893f",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-05-25T12:23:26.538619Z",
-     "iopub.status.busy": "2025-05-25T12:23:26.538298Z",
-     "iopub.status.idle": "2025-05-25T12:23:26.560543Z",
-     "shell.execute_reply": "2025-05-25T12:23:26.559379Z"
+     "iopub.execute_input": "2025-05-25T12:38:40.601711Z",
+     "iopub.status.busy": "2025-05-25T12:38:40.601434Z",
+     "iopub.status.idle": "2025-05-25T12:38:40.624570Z",
+     "shell.execute_reply": "2025-05-25T12:38:40.623487Z"
     },
     "papermill": {
-     "duration": 0.028405,
-     "end_time": "2025-05-25T12:23:26.562440",
+     "duration": 0.02878,
+     "end_time": "2025-05-25T12:38:40.626131",
      "exception": false,
-     "start_time": "2025-05-25T12:23:26.534035",
+     "start_time": "2025-05-25T12:38:40.597351",
      "status": "completed"
     },
     "tags": []
@@ -321,19 +321,19 @@
   {
    "cell_type": "code",
    "execution_count": 6,
-   "id": "5a00285c",
+   "id": "f1e196bc",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-05-25T12:23:26.570647Z",
-     "iopub.status.busy": "2025-05-25T12:23:26.570311Z",
-     "iopub.status.idle": "2025-05-25T12:23:26.576048Z",
-     "shell.execute_reply": "2025-05-25T12:23:26.575037Z"
+     "iopub.execute_input": "2025-05-25T12:38:40.637231Z",
+     "iopub.status.busy": "2025-05-25T12:38:40.636914Z",
+     "iopub.status.idle": "2025-05-25T12:38:40.641632Z",
+     "shell.execute_reply": "2025-05-25T12:38:40.640859Z"
     },
     "papermill": {
-     "duration": 0.011643,
-     "end_time": "2025-05-25T12:23:26.577636",
+     "duration": 0.010378,
+     "end_time": "2025-05-25T12:38:40.642976",
      "exception": false,
-     "start_time": "2025-05-25T12:23:26.565993",
+     "start_time": "2025-05-25T12:38:40.632598",
      "status": "completed"
     },
     "tags": []
@@ -351,19 +351,19 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "id": "82c52677",
+   "id": "cfbf549d",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-05-25T12:23:26.585897Z",
-     "iopub.status.busy": "2025-05-25T12:23:26.585054Z",
-     "iopub.status.idle": "2025-05-25T12:23:26.615950Z",
-     "shell.execute_reply": "2025-05-25T12:23:26.615035Z"
+     "iopub.execute_input": "2025-05-25T12:38:40.651324Z",
+     "iopub.status.busy": "2025-05-25T12:38:40.650948Z",
+     "iopub.status.idle": "2025-05-25T12:38:40.686430Z",
+     "shell.execute_reply": "2025-05-25T12:38:40.685658Z"
     },
     "papermill": {
-     "duration": 0.036553,
-     "end_time": "2025-05-25T12:23:26.617571",
+     "duration": 0.041473,
+     "end_time": "2025-05-25T12:38:40.687978",
      "exception": false,
-     "start_time": "2025-05-25T12:23:26.581018",
+     "start_time": "2025-05-25T12:38:40.646505",
      "status": "completed"
     },
     "tags": []
@@ -380,19 +380,19 @@
   {
    "cell_type": "code",
    "execution_count": 8,
-   "id": "54409574",
+   "id": "1e853575",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-05-25T12:23:26.625451Z",
-     "iopub.status.busy": "2025-05-25T12:23:26.625100Z",
-     "iopub.status.idle": "2025-05-25T12:23:26.630067Z",
-     "shell.execute_reply": "2025-05-25T12:23:26.629240Z"
+     "iopub.execute_input": "2025-05-25T12:38:40.696937Z",
+     "iopub.status.busy": "2025-05-25T12:38:40.696604Z",
+     "iopub.status.idle": "2025-05-25T12:38:40.701627Z",
+     "shell.execute_reply": "2025-05-25T12:38:40.700646Z"
     },
     "papermill": {
-     "duration": 0.01077,
-     "end_time": "2025-05-25T12:23:26.631724",
+     "duration": 0.011301,
+     "end_time": "2025-05-25T12:38:40.703340",
      "exception": false,
-     "start_time": "2025-05-25T12:23:26.620954",
+     "start_time": "2025-05-25T12:38:40.692039",
      "status": "completed"
     },
     "tags": []
@@ -409,19 +409,19 @@
   {
    "cell_type": "code",
    "execution_count": 9,
-   "id": "c720fff5",
+   "id": "1140b8cc",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-05-25T12:23:26.639427Z",
-     "iopub.status.busy": "2025-05-25T12:23:26.639091Z",
-     "iopub.status.idle": "2025-05-25T12:23:26.660329Z",
-     "shell.execute_reply": "2025-05-25T12:23:26.659350Z"
+     "iopub.execute_input": "2025-05-25T12:38:40.711777Z",
+     "iopub.status.busy": "2025-05-25T12:38:40.711459Z",
+     "iopub.status.idle": "2025-05-25T12:38:40.730235Z",
+     "shell.execute_reply": "2025-05-25T12:38:40.729105Z"
     },
     "papermill": {
-     "duration": 0.026907,
-     "end_time": "2025-05-25T12:23:26.661973",
+     "duration": 0.024779,
+     "end_time": "2025-05-25T12:38:40.731800",
      "exception": false,
-     "start_time": "2025-05-25T12:23:26.635066",
+     "start_time": "2025-05-25T12:38:40.707021",
      "status": "completed"
     },
     "tags": []
@@ -438,19 +438,19 @@
   {
    "cell_type": "code",
    "execution_count": 10,
-   "id": "3cfab6c2",
+   "id": "dfbc2064",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-05-25T12:23:26.669866Z",
-     "iopub.status.busy": "2025-05-25T12:23:26.669545Z",
-     "iopub.status.idle": "2025-05-25T12:23:26.675386Z",
-     "shell.execute_reply": "2025-05-25T12:23:26.674379Z"
+     "iopub.execute_input": "2025-05-25T12:38:40.740482Z",
+     "iopub.status.busy": "2025-05-25T12:38:40.739758Z",
+     "iopub.status.idle": "2025-05-25T12:38:40.745434Z",
+     "shell.execute_reply": "2025-05-25T12:38:40.744587Z"
     },
     "papermill": {
-     "duration": 0.011464,
-     "end_time": "2025-05-25T12:23:26.676850",
+     "duration": 0.0114,
+     "end_time": "2025-05-25T12:38:40.746854",
      "exception": false,
-     "start_time": "2025-05-25T12:23:26.665386",
+     "start_time": "2025-05-25T12:38:40.735454",
      "status": "completed"
     },
     "tags": []
@@ -469,19 +469,133 @@
   {
    "cell_type": "code",
    "execution_count": 11,
-   "id": "a6bb328a",
+   "id": "5ca2f792",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-05-25T12:23:26.684352Z",
-     "iopub.status.busy": "2025-05-25T12:23:26.684056Z",
-     "iopub.status.idle": "2025-05-25T12:23:26.696031Z",
-     "shell.execute_reply": "2025-05-25T12:23:26.695011Z"
+     "iopub.execute_input": "2025-05-25T12:38:40.755387Z",
+     "iopub.status.busy": "2025-05-25T12:38:40.754626Z",
+     "iopub.status.idle": "2025-05-25T12:38:40.765780Z",
+     "shell.execute_reply": "2025-05-25T12:38:40.764957Z"
     },
     "papermill": {
-     "duration": 0.017681,
-     "end_time": "2025-05-25T12:23:26.697720",
+     "duration": 0.016688,
+     "end_time": "2025-05-25T12:38:40.767076",
      "exception": false,
-     "start_time": "2025-05-25T12:23:26.680039",
+     "start_time": "2025-05-25T12:38:40.750388",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>date</th>\n",
+       "      <th>keyword</th>\n",
+       "      <th>search_interest</th>\n",
+       "      <th>trend_type</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>2020-05-24</td>\n",
+       "      <td>weights for home: (United States)</td>\n",
+       "      <td>1</td>\n",
+       "      <td>Home Equipment</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2020-05-31</td>\n",
+       "      <td>weights for home: (United States)</td>\n",
+       "      <td>1</td>\n",
+       "      <td>Home Equipment</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>2020-06-07</td>\n",
+       "      <td>weights for home: (United States)</td>\n",
+       "      <td>1</td>\n",
+       "      <td>Home Equipment</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>2020-06-14</td>\n",
+       "      <td>weights for home: (United States)</td>\n",
+       "      <td>1</td>\n",
+       "      <td>Home Equipment</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>2020-06-21</td>\n",
+       "      <td>weights for home: (United States)</td>\n",
+       "      <td>1</td>\n",
+       "      <td>Home Equipment</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "        date                            keyword search_interest  \\\n",
+       "0 2020-05-24  weights for home: (United States)               1   \n",
+       "1 2020-05-31  weights for home: (United States)               1   \n",
+       "2 2020-06-07  weights for home: (United States)               1   \n",
+       "3 2020-06-14  weights for home: (United States)               1   \n",
+       "4 2020-06-21  weights for home: (United States)               1   \n",
+       "\n",
+       "       trend_type  \n",
+       "0  Home Equipment  \n",
+       "1  Home Equipment  \n",
+       "2  Home Equipment  \n",
+       "3  Home Equipment  \n",
+       "4  Home Equipment  "
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Preview the combined trends data\n",
+    "all_trends.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "b7c652cd",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2025-05-25T12:38:40.775748Z",
+     "iopub.status.busy": "2025-05-25T12:38:40.775134Z",
+     "iopub.status.idle": "2025-05-25T12:38:40.785019Z",
+     "shell.execute_reply": "2025-05-25T12:38:40.784344Z"
+    },
+    "papermill": {
+     "duration": 0.015541,
+     "end_time": "2025-05-25T12:38:40.786416",
+     "exception": false,
+     "start_time": "2025-05-25T12:38:40.770875",
      "status": "completed"
     },
     "tags": []
@@ -498,17 +612,43 @@
        "Name: count, dtype: int64"
       ]
      },
-     "execution_count": 11,
+     "execution_count": 12,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
-    "# Preview the combined trends data\n",
-    "all_trends.head()\n",
-    "\n",
     "# Check how many records belong to each trend type to verify data completeness\n",
     "all_trends['trend_type'].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c9451b25",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003388,
+     "end_time": "2025-05-25T12:38:40.793469",
+     "exception": false,
+     "start_time": "2025-05-25T12:38:40.790081",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "# 📘 Summary of Notebook 1: Data Collection & Reshaping\n",
+    "\n",
+    "### In this first notebook, I :\n",
+    "* Imported U.S. economic recession data from FRED.\n",
+    "* Cleaned and reformatted multiple Google Trends CSVs across four fitness-related trend categories:\n",
+    "  * Home Equipment\n",
+    "  * Traditional Gyms\n",
+    "  * Group Fitness\n",
+    "  * Gym vs Home Shift\n",
+    "* Reshaped all datasets into a single long-format DataFrame (`all_trends`) suitable for time-series visualization and analysis.\n",
+    "* Verified trend balance: Each category contains 1,305 records.\n",
+    "\n",
+    "### Next steps will focus on data merging, exploratory data analysis (EDA), and visualizing how search behavior aligns with economic shifts (e.g. during COVID-19).\n"
    ]
   }
  ],
@@ -547,14 +687,14 @@
   },
   "papermill": {
    "default_parameters": {},
-   "duration": 8.852313,
-   "end_time": "2025-05-25T12:23:27.321638",
+   "duration": 7.546608,
+   "end_time": "2025-05-25T12:38:41.316245",
    "environment_variables": {},
    "exception": null,
    "input_path": "__notebook__.ipynb",
    "output_path": "__notebook__.ipynb",
    "parameters": {},
-   "start_time": "2025-05-25T12:23:18.469325",
+   "start_time": "2025-05-25T12:38:33.769637",
    "version": "2.6.0"
   }
  },
