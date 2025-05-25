@@ -1,0 +1,563 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "aec3012f",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003381,
+     "end_time": "2025-05-25T12:23:24.139668",
+     "exception": false,
+     "start_time": "2025-05-25T12:23:24.136287",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "# Analyzing Economic and Fitness-Related Google Trends During the COVID-19 Pandemic\n",
+    "\n",
+    "## Project Overview\n",
+    "This project investigates the relationship between macroeconomic indicators and fitness-related search behavior in the United States during the COVID-19 pandemic period. By combining official economic data from FRED (Federal Reserve Economic Data) with Google Trends data focused on home fitness equipment, gyms, and group fitness, we aim to understand how consumer interest shifted in response to economic and social changes.\n",
+    "\n",
+    "## Data Sources\n",
+    "### FRED Economic Indicators (CSV files):\n",
+    "* US Recession Indicator (USREC)\n",
+    "* Unemployment Rate (UNRATE)\n",
+    "* Consumer Price Index (CPI)\n",
+    "* Consumer Sentiment Index\n",
+    "* Personal Consumption Expenditure (PCE) for recreation services and goods\n",
+    "\n",
+    "### Google Trends Data (CSV files):\n",
+    "* Home equipment fitness keywords\n",
+    "* Traditional gym keywords\n",
+    "* Search shifts from gym to home workouts\n",
+    "* Group fitness keywords\n",
+    "\n",
+    "### Project Goals\n",
+    "* Load and clean multiple datasets consistently\n",
+    "* Reshape Google Trends data into a tidy format for analysis\n",
+    "* Combine economic and search interest data for comparative analysis\n",
+    "* Explore trends in home fitness equipment interest vs. traditional gyms\n",
+    "* Lay groundwork for predictive modeling or visualization"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "0d51a8f5",
+   "metadata": {
+    "_cell_guid": "b1076dfc-b9ad-4769-8c92-a6c4dae69d19",
+    "_uuid": "8f2839f25d086af736a60e9eeb907d3b93b6e0e5",
+    "execution": {
+     "iopub.execute_input": "2025-05-25T12:23:24.147588Z",
+     "iopub.status.busy": "2025-05-25T12:23:24.147172Z",
+     "iopub.status.idle": "2025-05-25T12:23:26.393022Z",
+     "shell.execute_reply": "2025-05-25T12:23:26.391221Z"
+    },
+    "papermill": {
+     "duration": 2.252058,
+     "end_time": "2025-05-25T12:23:26.394872",
+     "exception": false,
+     "start_time": "2025-05-25T12:23:24.142814",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "/kaggle/input/data-science-econ-health-port-proj/google_trends_group_fitness.csv\n",
+      "/kaggle/input/data-science-econ-health-port-proj/fred_consumer_sentiment.csv\n",
+      "/kaggle/input/data-science-econ-health-port-proj/fred_pce_recreation_goods.csv\n",
+      "/kaggle/input/data-science-econ-health-port-proj/fred_UNRATE.csv\n",
+      "/kaggle/input/data-science-econ-health-port-proj/google_trends_gym_home_shift.csv\n",
+      "/kaggle/input/data-science-econ-health-port-proj/fred_USREC.csv\n",
+      "/kaggle/input/data-science-econ-health-port-proj/google_trends_traditional_gyms.csv\n",
+      "/kaggle/input/data-science-econ-health-port-proj/fred_pce_recreation_services.csv\n",
+      "/kaggle/input/data-science-econ-health-port-proj/fred_CPI.csv\n",
+      "/kaggle/input/data-science-econ-health-port-proj/google_trends_home_equipment.csv\n"
+     ]
+    }
+   ],
+   "source": [
+    "# This Python 3 environment comes with many helpful analytics libraries installed\n",
+    "# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python\n",
+    "# For example, here's several helpful packages to load\n",
+    "\n",
+    "import numpy as np # linear algebra\n",
+    "import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "# Input data files are available in the read-only \"../input/\" directory\n",
+    "# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory\n",
+    "\n",
+    "import os\n",
+    "for dirname, _, filenames in os.walk('/kaggle/input'):\n",
+    "    for filename in filenames:\n",
+    "        print(os.path.join(dirname, filename))\n",
+    "\n",
+    "# You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using \"Save & Run All\" \n",
+    "# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "f24edbec",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2025-05-25T12:23:26.403272Z",
+     "iopub.status.busy": "2025-05-25T12:23:26.402775Z",
+     "iopub.status.idle": "2025-05-25T12:23:26.447844Z",
+     "shell.execute_reply": "2025-05-25T12:23:26.446812Z"
+    },
+    "papermill": {
+     "duration": 0.051049,
+     "end_time": "2025-05-25T12:23:26.449513",
+     "exception": false,
+     "start_time": "2025-05-25T12:23:26.398464",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>observation_date</th>\n",
+       "      <th>USREC</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>1854-12-01</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>1855-01-01</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>1855-02-01</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>1855-03-01</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>1855-04-01</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "  observation_date  USREC\n",
+       "0       1854-12-01      1\n",
+       "1       1855-01-01      0\n",
+       "2       1855-02-01      0\n",
+       "3       1855-03-01      0\n",
+       "4       1855-04-01      0"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Preview the USREC dataset to understand its structure\n",
+    "df_usrec_preview = pd.read_csv('/kaggle/input/data-science-econ-health-port-proj/fred_USREC.csv')\n",
+    "df_usrec_preview.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "1c5bd2b0",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2025-05-25T12:23:26.457679Z",
+     "iopub.status.busy": "2025-05-25T12:23:26.457360Z",
+     "iopub.status.idle": "2025-05-25T12:23:26.465900Z",
+     "shell.execute_reply": "2025-05-25T12:23:26.464747Z"
+    },
+    "papermill": {
+     "duration": 0.014634,
+     "end_time": "2025-05-25T12:23:26.467622",
+     "exception": false,
+     "start_time": "2025-05-25T12:23:26.452988",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Index(['observation_date', 'USREC'], dtype='object')"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Print column names for reference\n",
+    "df_usrec_preview.columns"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "7bce25ff",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2025-05-25T12:23:26.475208Z",
+     "iopub.status.busy": "2025-05-25T12:23:26.474867Z",
+     "iopub.status.idle": "2025-05-25T12:23:26.529060Z",
+     "shell.execute_reply": "2025-05-25T12:23:26.528016Z"
+    },
+    "papermill": {
+     "duration": 0.059867,
+     "end_time": "2025-05-25T12:23:26.530796",
+     "exception": false,
+     "start_time": "2025-05-25T12:23:26.470929",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Function to load and preprocess FRED economic datasets\n",
+    "def load_fred_data(file_path):\n",
+    "    # Load CSV and parse the date column\n",
+    "    df = pd.read_csv(file_path, parse_dates=['observation_date'])\n",
+    "    \n",
+    "    # Rename the date column for consistency\n",
+    "    df.rename(columns={'observation_date': 'date'}, inplace=True)\n",
+    "    \n",
+    "    return df\n",
+    "\n",
+    "# Load each FRED dataset\n",
+    "usrec = load_fred_data('/kaggle/input/data-science-econ-health-port-proj/fred_USREC.csv')\n",
+    "unrate = load_fred_data('/kaggle/input/data-science-econ-health-port-proj/fred_UNRATE.csv')\n",
+    "cpi = load_fred_data('/kaggle/input/data-science-econ-health-port-proj/fred_CPI.csv')\n",
+    "sentiment = load_fred_data('/kaggle/input/data-science-econ-health-port-proj/fred_consumer_sentiment.csv')\n",
+    "pce_services = load_fred_data('/kaggle/input/data-science-econ-health-port-proj/fred_pce_recreation_services.csv')\n",
+    "pce_goods = load_fred_data('/kaggle/input/data-science-econ-health-port-proj/fred_pce_recreation_goods.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "7d4a61a0",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2025-05-25T12:23:26.538619Z",
+     "iopub.status.busy": "2025-05-25T12:23:26.538298Z",
+     "iopub.status.idle": "2025-05-25T12:23:26.560543Z",
+     "shell.execute_reply": "2025-05-25T12:23:26.559379Z"
+    },
+    "papermill": {
+     "duration": 0.028405,
+     "end_time": "2025-05-25T12:23:26.562440",
+     "exception": false,
+     "start_time": "2025-05-25T12:23:26.534035",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Index(['Category: All categories'], dtype='object')\n",
+      "                                                                                                                                                     Category: All categories\n",
+      "Week       weights for home: (United States) yoga mat: (United States) running shoes: (United States) resistance bands: (United States)  adjustable dumbbell: (United States)\n",
+      "2020-05-24 1                                 19                        94                             21                                                                    4\n",
+      "2020-05-31 1                                 16                        89                             17                                                                    3\n",
+      "2020-06-07 1                                 16                        87                             18                                                                    4\n",
+      "2020-06-14 1                                 16                        89                             16                                                                    4\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Preview one of the Google Trends CSV files to inspect column names and format\n",
+    "temp = pd.read_csv('/kaggle/input/data-science-econ-health-port-proj/google_trends_home_equipment.csv')\n",
+    "print(temp.columns)\n",
+    "print(temp.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "5a00285c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2025-05-25T12:23:26.570647Z",
+     "iopub.status.busy": "2025-05-25T12:23:26.570311Z",
+     "iopub.status.idle": "2025-05-25T12:23:26.576048Z",
+     "shell.execute_reply": "2025-05-25T12:23:26.575037Z"
+    },
+    "papermill": {
+     "duration": 0.011643,
+     "end_time": "2025-05-25T12:23:26.577636",
+     "exception": false,
+     "start_time": "2025-05-25T12:23:26.565993",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Function to load and clean Google Trends data files\n",
+    "def clean_trends_data(file_path):\n",
+    "    df = pd.read_csv(file_path, skiprows=1)  # skip the first row\n",
+    "    df.rename(columns={df.columns[0]: 'date'}, inplace=True)\n",
+    "    df['date'] = pd.to_datetime(df['date'])\n",
+    "    return df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "82c52677",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2025-05-25T12:23:26.585897Z",
+     "iopub.status.busy": "2025-05-25T12:23:26.585054Z",
+     "iopub.status.idle": "2025-05-25T12:23:26.615950Z",
+     "shell.execute_reply": "2025-05-25T12:23:26.615035Z"
+    },
+    "papermill": {
+     "duration": 0.036553,
+     "end_time": "2025-05-25T12:23:26.617571",
+     "exception": false,
+     "start_time": "2025-05-25T12:23:26.581018",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Load and clean each Google Trends dataset by category\n",
+    "trends_home_equipment = clean_trends_data('/kaggle/input/data-science-econ-health-port-proj/google_trends_home_equipment.csv')\n",
+    "trends_traditional_gyms = clean_trends_data('/kaggle/input/data-science-econ-health-port-proj/google_trends_traditional_gyms.csv')\n",
+    "trends_gym_home_shift = clean_trends_data('/kaggle/input/data-science-econ-health-port-proj/google_trends_gym_home_shift.csv')\n",
+    "trends_group_fitness = clean_trends_data('/kaggle/input/data-science-econ-health-port-proj/google_trends_group_fitness.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "54409574",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2025-05-25T12:23:26.625451Z",
+     "iopub.status.busy": "2025-05-25T12:23:26.625100Z",
+     "iopub.status.idle": "2025-05-25T12:23:26.630067Z",
+     "shell.execute_reply": "2025-05-25T12:23:26.629240Z"
+    },
+    "papermill": {
+     "duration": 0.01077,
+     "end_time": "2025-05-25T12:23:26.631724",
+     "exception": false,
+     "start_time": "2025-05-25T12:23:26.620954",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Function to reshape wide-format Google Trends data into a long tidy format\n",
+    "def reshape_trends(df, trend_label):\n",
+    "    df_long = df.melt(id_vars='date', var_name='keyword', value_name='search_interest')\n",
+    "    df_long['trend_type'] = trend_label\n",
+    "    return df_long"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "c720fff5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2025-05-25T12:23:26.639427Z",
+     "iopub.status.busy": "2025-05-25T12:23:26.639091Z",
+     "iopub.status.idle": "2025-05-25T12:23:26.660329Z",
+     "shell.execute_reply": "2025-05-25T12:23:26.659350Z"
+    },
+    "papermill": {
+     "duration": 0.026907,
+     "end_time": "2025-05-25T12:23:26.661973",
+     "exception": false,
+     "start_time": "2025-05-25T12:23:26.635066",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Apply reshaping to each Google Trends dataset, tagging by trend category\n",
+    "home_equipment_long = reshape_trends(trends_home_equipment, 'Home Equipment')\n",
+    "traditional_gyms_long = reshape_trends(trends_traditional_gyms, 'Traditional Gyms')\n",
+    "gym_home_shift_long = reshape_trends(trends_gym_home_shift, 'Gym vs Home Shift')\n",
+    "group_fitness_long = reshape_trends(trends_group_fitness, 'Group Fitness')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "3cfab6c2",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2025-05-25T12:23:26.669866Z",
+     "iopub.status.busy": "2025-05-25T12:23:26.669545Z",
+     "iopub.status.idle": "2025-05-25T12:23:26.675386Z",
+     "shell.execute_reply": "2025-05-25T12:23:26.674379Z"
+    },
+    "papermill": {
+     "duration": 0.011464,
+     "end_time": "2025-05-25T12:23:26.676850",
+     "exception": false,
+     "start_time": "2025-05-25T12:23:26.665386",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Combine all reshaped trends data into a single DataFrame for unified analysis\n",
+    "all_trends = pd.concat([\n",
+    "    home_equipment_long,\n",
+    "    traditional_gyms_long,\n",
+    "    gym_home_shift_long,\n",
+    "    group_fitness_long\n",
+    "], ignore_index=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "a6bb328a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2025-05-25T12:23:26.684352Z",
+     "iopub.status.busy": "2025-05-25T12:23:26.684056Z",
+     "iopub.status.idle": "2025-05-25T12:23:26.696031Z",
+     "shell.execute_reply": "2025-05-25T12:23:26.695011Z"
+    },
+    "papermill": {
+     "duration": 0.017681,
+     "end_time": "2025-05-25T12:23:26.697720",
+     "exception": false,
+     "start_time": "2025-05-25T12:23:26.680039",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "trend_type\n",
+       "Home Equipment       1305\n",
+       "Traditional Gyms     1305\n",
+       "Gym vs Home Shift    1305\n",
+       "Group Fitness        1305\n",
+       "Name: count, dtype: int64"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Preview the combined trends data\n",
+    "all_trends.head()\n",
+    "\n",
+    "# Check how many records belong to each trend type to verify data completeness\n",
+    "all_trends['trend_type'].value_counts()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kaggle": {
+   "accelerator": "none",
+   "dataSources": [
+    {
+     "datasetId": 7502638,
+     "sourceId": 11933524,
+     "sourceType": "datasetVersion"
+    }
+   ],
+   "dockerImageVersionId": 31040,
+   "isGpuEnabled": false,
+   "isInternetEnabled": true,
+   "language": "python",
+   "sourceType": "notebook"
+  },
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.11"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 8.852313,
+   "end_time": "2025-05-25T12:23:27.321638",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "__notebook__.ipynb",
+   "output_path": "__notebook__.ipynb",
+   "parameters": {},
+   "start_time": "2025-05-25T12:23:18.469325",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
